@@ -12,7 +12,7 @@ This way we don't have to write queries. Just define an interface that extends `
 
 We can get even more functionality by just adding method signatures. There is no need to implement the query in this case.
 
-```
+```java
 public interface PersonRepository extends LdapRepository<PersonEntry>, CustomPersonRepository {
     PersonEntry findByFullName(String fullName);
 }
@@ -22,7 +22,7 @@ Note that this only works if `fullName` is a field in PersonEntry with the annot
 
 We can do complex queries such as:
 
-```
+```java
 PersonEntry findByLastNameAndWhenChanged(String lastName, String whenChanged);
 ```
 
@@ -32,7 +32,7 @@ However, greater than queries are not supported. A the signature below results i
 java.lang.IllegalArgumentException: GREATER_THAN (1): [IsGreaterThan, GreaterThan] queries are not supported for LDAP repositories
 ```
 
-```
+```java
 PersonEntry findByWhenChangedGreaterThan(String whenChanged);
 ```
 
@@ -40,7 +40,7 @@ But we can provide our own implementation in 3 steps:
 
 1. Create another interface with the method signature. I will call it CustomPersonRepository.
 
-```
+```java
 public interface CustomPersonRepository {
     PersonEntry findByWhenChangedGreaterThan(String whenChanged);
 }
@@ -48,7 +48,7 @@ public interface CustomPersonRepository {
 
 2. Extend this interface in `PersonRepository`.
 
-```
+```java
 public interface PersonRepository extends LdapRepository<PersonEntry>, CustomPersonRepository {
     ...
 }
@@ -56,7 +56,7 @@ public interface PersonRepository extends LdapRepository<PersonEntry>, CustomPer
 
 3. Create an implementation named CustomRepositoryImpl. It is important that the name ends in Impl.
 
-```
+```java
 public class CustomPersonRepositoryImpl implements CustomPersonRepository {
 
     @Autowired
