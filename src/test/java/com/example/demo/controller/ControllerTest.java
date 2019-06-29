@@ -22,7 +22,7 @@ public class ControllerTest {
 
     @Test
     public void controller() throws Exception {
-        this.mockMvc.perform(get("/Bobson"))
+        this.mockMvc.perform(get("/bobson"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'fullName': 'Bob Bobson'}"));
     }

@@ -54,4 +54,28 @@ public class ApplicationTests {
 		assertThat(personEntry.getFullName()).isEqualTo(lastName);
 	}
 
+	@Test
+	public void testFindByLastNameLike() {
+		String lastName = "Bobs*";
+		PersonEntry personEntry = personRepository.findByLastNameLike(lastName);
+		assertThat(personEntry).isNotNull();
+		assertThat(personEntry.getFullName()).isEqualTo("Bob Bobson");
+	}
+
+	@Test
+	public void testFindByWhenChangedGreaterThan() {
+		String whenChanged = "40";
+		PersonEntry personEntry = personRepository.findByWhenChangedGreaterThan(whenChanged);
+		assertThat(personEntry).isNotNull();
+		assertThat(personEntry.getFullName()).isEqualTo("Bob Bobson");
+	}
+
+	@Test
+	public void testFindByLastNameAndWhenChanged() {
+		String lastName = "Bobson";
+		String whenChanged = "44";
+		PersonEntry personEntry = personRepository.findByLastNameAndWhenChanged(lastName, whenChanged);
+		assertThat(personEntry).isNotNull();
+	}
+
 }

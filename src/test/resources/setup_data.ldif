@@ -24,4 +24,5 @@ objectclass: inetOrgPerson
 cn: Bob Bobson
 sn: Bobson
 uid: bob
+whenChanged: 42
 password: secret
