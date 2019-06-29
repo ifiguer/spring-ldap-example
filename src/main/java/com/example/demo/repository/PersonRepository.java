@@ -8,4 +8,5 @@ public interface PersonRepository extends LdapRepository<PersonEntry>, CustomPer
     PersonEntry findByLastName(String lastName);
     PersonEntry findByLastNameAndWhenChanged(String lastName, String whenChanged);
     PersonEntry findByLastNameLike(String lastName);
+    PersonEntry findByWhenChangedGreaterThan(String whenChanged);
 }

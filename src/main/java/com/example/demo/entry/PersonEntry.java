@@ -5,6 +5,7 @@ import org.springframework.ldap.odm.annotations.Entry;
 import org.springframework.ldap.odm.annotations.Id;
 
 import javax.naming.Name;
+import java.util.Objects;
 
 @Entry(objectClasses = { "top", "person" })
 public class PersonEntry {

@@ -73,8 +73,15 @@ public class ApplicationTests {
 	@Test
 	public void testFindByLastNameAndWhenChanged() {
 		String lastName = "Bobson";
-		String whenChanged = "44";
+		String whenChanged = "42";
 		PersonEntry personEntry = personRepository.findByLastNameAndWhenChanged(lastName, whenChanged);
+		assertThat(personEntry).isNotNull();
+	}
+
+	@Test
+	public void testGreaterThanOrEqual() {
+		String whenChanged = "40";
+		PersonEntry personEntry = personRepository.findByWhenChangedGreaterThan(whenChanged);
 		assertThat(personEntry).isNotNull();
 	}
 
